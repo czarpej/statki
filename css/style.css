@@ -1,0 +1,659 @@
+@font-face
+		{
+			font-family: "Comic Sans MS";
+			src: url("fonts/COMIC.TTF") format("truetype");
+		}
+		body
+		{
+			margin: 0;
+			background-image: url("../img/background1.png");
+			font-family: "Comic Sans MS";
+			color: #FA7C00;
+		}
+		.poczatek
+		{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.poczatek button
+		{
+			padding: 5px;
+			width: 150px;
+			border-radius: 25px;
+			outline: none;
+			border: 2px solid #ff6700;
+			transition: 0.3s all ease-out;
+			background-color: #ffc294;
+			font-weight: 700;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		.poczatek button:hover
+		{
+			background-color: #eeb183;
+		}
+		.poczatek button:active
+		{
+			box-shadow: 1px 1px 11px 1px #ff6700;
+		}
+		.plansze
+		{
+			display: none;
+			opacity: 0;
+		}
+
+		.plansza1, .plansza2
+		{
+			flex: 50%;
+			padding: 10px;
+			position: relative;
+		}
+
+		.plansza1
+		{
+			border-right: 1px solid #FA7C00;
+		}
+		td
+		{
+			vertical-align: middle;
+			text-align: center;
+			padding: 10px;
+		}
+		.pole
+		{
+			box-shadow: 1px 1px 1px 1px black;
+			cursor: pointer;
+			transition: 0.3s all ease-out;
+			background-color: #5995bd;
+			min-width: 18px;
+			min-height: 18px;
+		}
+		.pole:hover
+		{
+			background-color: #ff6700;
+		}
+		.rozmieszczanie
+		{
+			display: none;
+			text-align: center;
+		}
+		.info
+		{
+			text-shadow: 0px 0px 11px;
+			font-weight: 600;
+		}
+		.plansza
+		{
+			text-align: center;
+			flex: 70%;
+		}
+		.plansza table
+		{
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.info_dzialanie, .dziennikBitwy_rozszerzony, .plansza_infoRozszerzone, .endGame, .infoOnline
+		{
+			width: 100vw;
+			height: 100vh;
+			background-color: #0005;
+			position: fixed;
+			top: 0;
+			z-index: -1;
+			opacity: 0;
+			display: none;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.info_dzialanie div, .dziennikBitwy_rozszerzony div, .plansza_infoRozszerzone div, .endGame div, .infoOnline > div
+		{
+			padding: 15px;
+			background-color: black;
+			color: black;
+			text-align: center;
+			border: 1px solid #FA7C00;
+			z-index: 3;
+			opacity: 1;
+			background-color: rgba(255,255,255,0.8);
+			box-shadow: 0px 0px 11px 0px #FA7C00;
+		}
+
+		.info_dzialanie div
+		{
+			font-weight: 600;
+		}
+
+		.dziennikBitwy_rozszerzony div, .plansza_infoRozszerzone div, .endGame div, .infoOnline div
+		{
+			width: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		.dziennikBitwy_rozszerzony div > div, .plansza_infoRozszerzone div:nth-child(2), .endGame div:nth-child(2), .infoOnline div:nth-child(2)
+		{
+			border: 0;
+			background-color: transparent;
+			padding-bottom: 0;
+			box-shadow: 0 0 0 0;
+		}
+
+		.infoOnline div div
+		{
+			width: 100%;
+		}
+
+		.endGame div:nth-child(2)
+		{
+			padding-bottom: 15px;
+		}
+
+		.dziennikBitwy_rozszerzony div > div
+		{
+			padding-bottom: 15px;
+		}
+
+		.dziennikBitwy
+		{
+			position: fixed;
+			bottom: 1%;
+			right: 5px;
+			display: flex;
+		}
+
+		.dziennikBitwy textarea
+		{
+			width: 250px;
+			height: 150px;
+			cursor: pointer;
+			resize: none;
+			background-color: #FA7C00;
+			border: 1px solid #373737;
+   			box-shadow: 0px 0px 11px 0px #FA7C00;
+		}
+
+		.dziennikBitwy_rozszerzony > div, .plansza_infoRozszerzone > div, .endGame div, .infoOnline div
+		{
+			transition: 0.3s all ease-out;
+		}
+
+		.dziennikBitwy_rozszerzony > div > div, .plansza_infoRozszerzone > div > div, .endGame > div > div, .infoOnline > div > div
+		{
+			width: 80%;
+			/*font-size: 36px;*/
+			background-color: transparent;
+		}
+
+		.plansza_infoRozszerzone > div > div:first-child, .infoOnline > div > div:first-child
+		{
+			background-image: url("../img/background1.png");
+			color: #FA7C00;
+			margin-bottom: 15px;
+		}
+
+		.endGame > div > div
+		{
+			font-size: 36px;
+			background-image: url("../img/background1.png");
+			color: #fa7c00;
+		}
+
+		.dziennikBitwy_rozszerzony > div > div textarea
+		{
+			width: 100%;
+			height: 50vh;
+			max-height: 80vh;
+			resize: vertical;
+			overflow: auto;
+			background-image: url(../img/background1.png);
+		    color: #FA7C00;
+		    padding: 0 5px;
+		    border: 1px solid #FA7C00;
+    		box-shadow: 0px 0px 11px 0px #FA7C00;
+		}
+
+		.dziennikBitwy_rozszerzony > div > div:nth-child(2) button, .plansza_infoRozszerzone > div > div:nth-child(2) button, .shipsInfoButton, .repeatGame, .dziennikBitwy_button, .poczatek button, .other_player > div button, .choice button, #player_id button, .infoOnline button
+		{
+			padding: 10px;
+			border-radius: 5px;
+			outline: none;
+			transition: 0.3s all ease-out;
+			font-weight: 600;
+	    background-color: #fa7c00;
+	    border: 3px solid #333333;
+			cursor: pointer;
+		}
+
+		.dziennikBitwy_rozszerzony > div > div:nth-child(2) button:hover, .plansza_infoRozszerzone > div > div:nth-child(2) button:hover, .shipsInfoButton:hover, .repeatGame:hover, .dziennikBitwy_button:hover, .poczatek button:hover, .other_player > div button:hover, .choice button:hover, #player_id button:hover, .infoOnline button:hover
+		{
+			box-shadow: 0px 0px 31px 0px #FA7C00;
+    		background-color: #fb8d11;
+		}
+
+		.infoOnline button
+		{
+			width: 150px;
+		}
+
+		#player_id button
+		{
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 25px;
+		}
+
+		.plansza1 > div, .plansza2 > div
+		{
+			display: flex;
+		}
+
+		.plansza1_info, .plansza2_info
+		{
+			flex: 30%;
+		}
+
+		.plansza1_info, .plansza2_info
+		{
+			margin-left: 10px;
+		    border-left: 1px solid;
+		    padding-left: 15px;
+		}
+
+		.shipsInfo, .shipsInfo th, .shipsInfo td
+		{
+			text-align: left;
+			padding: 0;
+			width: 100%;
+		    margin-top: 10px;
+		    margin-bottom: 10px;
+		    background-color: rgba(255,255,255,0.8);
+		    border-collapse: collapse;
+		    padding: 5px;
+		    font-size: 13px;
+		    color: black;
+		}
+		.plansza_infoRozszerzone .shipsInfo, .plansza_infoRozszerzone .shipsInfo th, .plansza_infoRozszerzone .shipsInfo td
+		{
+			color: #FA7C00;
+			background-color: transparent;
+		}
+
+		.plansza_infoRozszerzone .shipsInfo:nth-child(2)
+		{
+			border-top: 1px solid;
+		}
+
+
+		.infoButtons
+		{
+			display: none;
+			height: 40px;
+			position: absolute;
+			top: calc(1em + 10px);
+			right: 1%;
+		}
+
+		.infoStart, .online_players
+		{
+			width: calc(100% - 30px);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			border-top: 1px solid #FA7C00;
+			margin-top: 16px;
+		}
+
+		.online_players
+		{
+			border-top: 0;
+			display: none;
+			opacity: 0;
+			width: 100%;
+		}
+
+		.infoStart h3, .online_players h3
+		{
+			text-align: center;
+			font-family: auto;
+			font-size: 20px;
+		}
+
+		.online_players_inner
+		{
+			min-height: 63px;
+			width: 100%;
+		}
+
+		.online_info_time, .status_online
+		{
+			position: absolute;
+			top: 5%;
+			right: 1%;
+			font-size: 12px;
+		}
+
+		#player_id
+		{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-top: 5px;
+		}
+
+		#playerId
+		{
+			text-align: center;
+			margin-bottom: 25px;
+		}
+
+		.active_players
+		{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 15px;
+		}
+		.other_player
+		{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			border: 1px solid #fa7c00;
+			width: 60%;
+			margin-bottom: 5px;
+			background-image: url(../img/background1.png);
+		  color: #fa7c00;
+		}
+		.other_player > div
+		{
+			width: calc(100% - 20px);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px;
+		}
+		.other_player > div:first-child
+		{
+			border-bottom: 1px solid #fa7c00;
+		}
+		.other_player > div button
+		{
+			padding: 7px;
+			max-width: 250px;
+			margin-bottom: 0;
+		}
+
+		.zasady, .online_players > div
+		{
+			font-size: 14px;
+			width: 80%;
+			background-color: rgba(255,255,255,0.8);
+	    margin-top: 15px;
+	    padding: 0 15px;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    color: black;
+		}
+		.zasady ul
+		{
+			width: 90%;
+    		margin-top: 0;
+    		margin-bottom: 30px;
+		}
+		.online_players > div
+		{
+			display: none;
+			position: relative;
+		}
+		.online_players > div:first-child
+		{
+			display: block;
+		}
+		.online_players > div:first-child .status_online
+		{
+			left: auto;
+			right: 1%;
+			display: block;
+		}
+		.choice
+		{
+			position: relative;
+		}
+		.choice > div
+		{
+			margin-bottom: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.choice button
+		{
+			margin-bottom: 5px;
+			width: 100%;
+		}
+		.choice .status_online
+		{
+			left: 1%;
+			right: auto;
+			display: block;
+		}
+		.status_online_color
+		{
+			min-width: 16px;
+			min-height: 16px;
+			border-radius: 25px;
+		}
+		.status_online_color span
+		{
+			visibility: hidden;
+		}
+		.back
+		{
+			position: absolute;
+	    left: 1%;
+	    margin-top: 7px;
+		}
+		.back button
+		{
+			background: url(../img/up2.png) no-repeat -1px -2px;
+			background-color: #fa7c00;
+			background-size: 24px;
+	    width: 24px;
+	    height: 24px;
+	    text-decoration: none;
+			border: 1px solid transparent;
+    	border-radius: 50px;
+			transform: rotate(-90deg);
+		}
+
+		.kolorek_czerwony
+		{
+			background-color: #fa0000d9;
+		}
+		.kolorek_czerwony span
+		{
+			visibility: hidden;
+		}
+
+		.kolorek_czarny
+		{
+			background-color: #212121;
+		}
+		.kolorek_czarny span
+		{
+			visibility: hidden;
+		}
+
+		.kolorek_zielony
+		{
+			background-color: #1ca92cd9;
+		}
+		.kolorek_zielony span
+		{
+			visibility: hidden;
+		}
+
+		.kolorek_szary
+		{
+			background-color: #9e9e9e;
+		}
+		.kolorek_szary span
+		{
+			visibility: hidden;
+		}
+
+		.rozmieszczanie .dziennikBitwy_button
+		{
+			position: fixed;
+			right: 5px;
+			bottom: 5px;
+			display: none;
+		}
+
+		.board
+		{
+		    background-color: rgba(255,255,255,0.8);
+		    padding-right: 35px;
+		    padding-bottom: 44px;
+		    color: black;
+		}
+
+		@media(max-width: 1336px)
+		{
+			.plansze
+			{
+				flex-direction: column;
+			}
+			.plansza1, .plansza2
+			{
+				flex: 100%;
+			}
+			.plansza1
+			{
+				border-right: 0;
+				border-bottom: 1px solid #FA7C00;
+			}
+		}
+		@media(max-width: 499px)
+		{
+			.plansza1, .plansza2
+			{
+				padding: 10px 2px;
+			}
+			.plansza1 h3, .plansza2 h3
+			{
+				margin-left: 1%;
+			}
+			td
+			{
+				padding: 7px;
+			}
+			.board
+			{
+				padding-right: 30px;
+			}
+			.online_players > div
+			{
+				width: calc(100% - 30px);
+			}
+			.infoOnline > div
+			{
+				width: 100% !important;
+			}
+			.infoOnline > div > div
+			{
+				width: 100%;
+			}
+		}
+		@media(max-width: 418px)
+		{
+			td
+			{
+				padding: 5px;
+			}
+			.board
+			{
+				padding-right: 27px;
+			}
+			.other_player
+			{
+				width: 90%;
+			}
+		}
+		@media(max-width: 345px)
+		{
+			.plansza table
+			{
+			    margin-left: unset;
+			    margin-right: unset;
+			}
+		}
+
+		@media(max-width: 767px)
+		{
+			.dziennikBitwy_rozszerzony > div, .plansza_infoRozszerzone > div, .endGame > div, .infoOnline > div
+			{
+				width: 80%;
+			}
+
+			.infoStart div
+			{
+				width: 100%;
+			}
+		}
+		@media(min-width: 765px)
+		{
+			.other_player
+			{
+				flex-direction: row;
+			}
+			.other_player > div:first-child
+			{
+				border-bottom: 0;
+				border-right: 1px solid #fa7c00;
+			}
+			.other_player > div:nth-child(2) > button
+			{
+					margin-bottom: 0;
+			}
+		}
+
+		@media(max-width: 684px)
+		{
+			.plansza1_info, .plansza2_info
+			{
+				display: none;
+			}
+
+			.plansza_infoRozszerzone > div > div > table
+			{
+				display: table;
+			}
+
+			.plansza
+			{
+				flex: 100%;
+			}
+
+			.infoButtons
+			{
+				display: block;
+			}
+
+			.dziennikBitwy
+			{
+				display: none;
+			}
+
+			.rozmieszczanie .dziennikBitwy_button
+			{
+				display: block;
+			}
+		}
